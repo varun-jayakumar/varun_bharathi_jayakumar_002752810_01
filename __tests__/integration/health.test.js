@@ -25,7 +25,7 @@ describe("/healthz", () => {
     expect(response.headers["cache-control"]).toEqual("no-cache");
   });
 
-  it("responds with 400 for GET /healthz (with pyload)", async () => {
+  it("responds with 400 for GET /healthz (with payload)", async () => {
     const response = await request(app)
       .get("/healthz")
       .set("content-type", "application/json")
