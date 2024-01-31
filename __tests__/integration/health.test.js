@@ -31,6 +31,12 @@ describe("/healthz", () => {
     expect(response.headers["cache-control"]).toEqual("no-cache");
   });
 
+  it("responds with 400 for GET /healthz?key=value", async () => {
+    const response = await request(app).patch("/healthz");
+    expect(response.status).toEqual(405);
+    expect(response.headers["cache-control"]).toEqual("no-cache");
+  });
+
   it("responds with 400 for GET /healthz (with payload)", async () => {
     const response = await request(app)
       .get("/healthz")
